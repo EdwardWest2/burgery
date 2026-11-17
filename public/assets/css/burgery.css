@@ -1,0 +1,382 @@
+/* =====================================================================
+   Burgery - tambahan di atas style.css bawaan Sarab.
+   Hanya berisi komponen halaman dalam (page header, artikel, formulir,
+   detail menu, dll.). Warna, tipografi, dan komponen utama tetap
+   memakai variabel & kelas Sarab.
+   ===================================================================== */
+
+/* Aksesibilitas */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--dark);
+  color: #fff;
+  padding: 10px 18px;
+  z-index: 100000;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+:focus-visible {
+  outline: 3px solid var(--secondary);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .mqtrack { animation: none !important; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* Logo gambar di navbar */
+.blogo-img {
+  height: 46px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+}
+
+/* ---------- Header halaman dalam ---------- */
+.pghead {
+  background: var(--dark);
+  padding: 58px 0 52px;
+  position: relative;
+  overflow: hidden;
+}
+.pghead::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+}
+.pgcrumb {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0 0 14px;
+  font-size: 0.82rem;
+}
+.pgcrumb li + li::before {
+  content: "/";
+  color: #666;
+  margin-right: 8px;
+}
+.pgcrumb a {
+  color: var(--secondary);
+}
+.pgcrumb a:hover {
+  color: #fff;
+}
+.pgcrumb span {
+  color: #bbb;
+}
+.pgtitle {
+  color: #fff;
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 820px;
+}
+.pglead {
+  color: #aaa;
+  margin: 12px 0 0;
+  max-width: 560px;
+  font-size: 0.95rem;
+}
+section.pgbody {
+  padding: 64px 0 88px;
+}
+.pgimg {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Daftar menu & artikel ---------- */
+.listsearch {
+  display: flex;
+  max-width: 520px;
+  margin: 0 auto 26px;
+  border: 2px solid #eee;
+  border-radius: 50px;
+  overflow: hidden;
+  background: #fff;
+}
+.listsearch:focus-within {
+  border-color: var(--primary);
+}
+.listsearch input {
+  flex: 1;
+  border: 0;
+  padding: 12px 20px;
+  font-size: 0.92rem;
+  outline: 0;
+  background: transparent;
+}
+.listsearch button {
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+  padding: 0 22px;
+  cursor: pointer;
+}
+a.filtbtn {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+a.filtbtn small {
+  opacity: 0.7;
+}
+a.catcard {
+  text-decoration: none;
+  color: inherit;
+}
+.sovcat {
+  text-decoration: none;
+}
+.mwrap .mcard {
+  height: 100%;
+}
+a.mcard-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.mbdg.sold {
+  background: #6c757d;
+}
+span.madd {
+  pointer-events: none;
+}
+.emptybox {
+  text-align: center;
+  padding: 56px 16px;
+  color: #888;
+}
+.emptybox i {
+  font-size: 2.4rem;
+  color: #ddd;
+  margin-bottom: 14px;
+  display: block;
+}
+.emptybox p {
+  margin-bottom: 18px;
+}
+.blexc {
+  font-size: 0.86rem;
+  color: #777;
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+.pagination {
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.page-link {
+  color: var(--primary);
+  border-radius: 8px !important;
+  border: 1px solid #eee;
+}
+.page-link:hover {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.page-item.active .page-link {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.page-item.disabled .page-link {
+  color: #bbb;
+}
+
+/* ---------- Detail menu ---------- */
+.mdetimg {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--cream);
+}
+.mdetimg img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+}
+.mdetprice {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.mdetstat {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.mdetstat.ok { color: var(--green); }
+.mdetstat.no { color: #6c757d; }
+.mdetfeat {
+  margin-left: 14px;
+  color: var(--secondary);
+}
+
+/* ---------- Tombol sekunder ---------- */
+.btn-red.btn-ghost {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  box-shadow: none;
+}
+.btn-red.btn-ghost:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ---------- Isi artikel & halaman ---------- */
+.prose {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: #444;
+  max-width: 72ch;
+}
+.prose h2,
+.prose h3,
+.prose h4 {
+  margin: 1.8em 0 0.6em;
+  line-height: 1.3;
+}
+.prose h2 { font-size: 1.65rem; }
+.prose h3 { font-size: 1.3rem; }
+.prose h4 { font-size: 1.1rem; }
+.prose > :first-child { margin-top: 0; }
+.prose p { margin-bottom: 1.1em; }
+.prose ul,
+.prose ol { margin: 0 0 1.2em; padding-left: 1.4em; }
+.prose li { margin-bottom: 0.4em; }
+.prose a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+.prose img { max-width: 100%; height: auto; border-radius: 12px; margin: 1em 0; }
+.prose blockquote {
+  border-left: 4px solid var(--primary);
+  margin: 1.4em 0;
+  padding: 4px 0 4px 20px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  color: var(--dark);
+}
+.prose hr { border: 0; border-top: 2px solid #eee; margin: 2em 0; }
+.prose pre,
+.prose code { background: var(--light); border-radius: 6px; padding: 2px 6px; font-size: 0.9em; }
+.prose pre { padding: 14px; overflow-x: auto; }
+
+.armeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.84rem;
+  color: #888;
+  margin-bottom: 22px;
+}
+.armeta i { color: var(--primary); margin-right: 6px; }
+.arhero { margin: 0 0 26px; }
+.arhero img { width: 100%; border-radius: 16px; display: block; box-shadow: var(--shadow); }
+.arlead {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--dark);
+  margin-bottom: 1.4em;
+}
+.arfoot { margin-top: 40px; padding-top: 24px; border-top: 2px solid #f0eae2; }
+
+/* ---------- Formulir ---------- */
+.formcard {
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+}
+.fctrl.is-bad { border-color: var(--primary); }
+.ferr { color: var(--primary); font-size: 0.78rem; margin-top: 5px; }
+.formalert {
+  border-radius: 11px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+.formalert.ok { background: rgba(45, 106, 79, 0.1); color: var(--green); }
+.formalert.err { background: rgba(232, 40, 26, 0.08); color: var(--primary); }
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- Lokasi ---------- */
+.loccard {
+  background: #fff;
+  border-radius: 14px;
+  padding: 26px;
+  box-shadow: var(--shadow);
+  height: 100%;
+}
+.loccard h5 { font-size: 1.15rem; margin-bottom: 14px; }
+.loccard p { font-size: 0.88rem; color: #666; margin-bottom: 8px; }
+.loccard p i { color: var(--primary); width: 20px; }
+
+/* ---------- Galeri ---------- */
+button.gitem {
+  border: 0;
+  padding: 0;
+  background: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+.ggrid-flow {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-rows: none;
+  grid-auto-rows: 240px;
+}
+.ggrid-flow .gitem:first-child { grid-row: auto; }
+.gpdesc, #gpDesc { color: #bbb; }
+
+/* ---------- Testimoni (inisial menggantikan foto) ---------- */
+.tesinit {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ---------- Bilah pratinjau admin ---------- */
+.preview-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background: var(--secondary);
+  color: var(--dark);
+  text-align: center;
+  padding: 9px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.preview-bar a { color: var(--dark); text-decoration: underline; margin-left: 10px; font-weight: 700; }

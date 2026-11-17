@@ -1,0 +1,19 @@
+# .htaccess di root proyek: melindungi file sensitif jika folder proyek
+# diakses langsung lewat http://localhost/burgery/
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Blok akses langsung ke folder internal Laravel.
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)(/|$) - [F,L]
+    # Blok file sensitif.
+    RewriteRule ^(\.env.*|\.git.*|artisan|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|README\.md)$ - [F,L]
+    # Arahkan pengunjung ke folder public.
+    RewriteRule ^$ public/ [L]
+</IfModule>
+
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
